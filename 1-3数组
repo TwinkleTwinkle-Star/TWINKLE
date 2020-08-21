@@ -1,0 +1,35 @@
+//在字符串指定位置插入字符
+#include<stdio.h>
+#include<string.h> 
+int main() 
+{
+    char str[20]={0};//str[]储存原字符串
+    char b[20]={0};//b[]储存储存str[m-1]后的元素
+    int m,i,length;//m为字符串插入位置，length为原字符串长度
+    int j=0;
+    char c; //c为需要插入的元素
+    printf("请输入字符串：");
+    scanf("%s",str);
+    getchar();
+    printf("请输入插入位置：");
+    scanf("%d", &m);
+    getchar();   //消除回车影响
+    printf("请输入插入元素：");
+    scanf("%c",&c);
+    length=strlen(str);//调用strlen函数计算字符串长度
+    for(i=m-1;i<=length;i++)  //从字符串的第m位开始,b[j]用于储存str[m-1]后的元素
+    {
+        b[j] = str[i];
+        j++;
+    }
+    str[m-1]=c;//在第m位插入元素
+    j=0;
+    for(i= m;i<=length;i++)
+    {
+        str[i]=b[j];
+        j++;
+    }
+ 
+    printf("插入后字符串为：%s\n", str);
+    return 0;
+}
