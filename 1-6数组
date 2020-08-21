@@ -1,0 +1,33 @@
+//寻找3行3列数组中的最小值
+#include<stdio.h>
+int main(void)
+{
+	int i,j,x=0,y=0;//x,y 用于储存二维数组中最小元素的位置
+	int a[3][3],min;
+	printf("输入9个数: \n");
+    for (i=0;i<3;i++)
+	{
+		for(j=0;j<3;j++)
+		{
+			scanf("%d", &a[i][j]);
+		}
+	}
+	min=a[0][0];
+	printf("输出:\n");
+	for (i=0;i<3;i++)//寻找最小值
+	{
+		for(j=0;j<3;j++)
+		{
+			printf("%d  ",a[i][j]);//输出3*3数列
+			if(a[i][j]<min)
+			{
+				min=a[i][j];
+				x=i;
+				y=j;//记录最小值的位置
+			}
+		}
+		printf("\n");//每行有三个数时换行
+	}
+	printf("min=%d\t序号为第%d行第%d个\n",min,x+1,y+1);
+	return 0;
+}
