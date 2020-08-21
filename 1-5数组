@@ -1,35 +1,26 @@
-//有n个人围成一圈,顺序排号,从第一个开始报数(从1到3报数),凡报到3的人退出圈子,问最后留下的是原来第几号的那位.
-#include <stdio.h>
-int main()
+//二维数组计算五名学生三门课程成绩的平均值
+#include<stdio.h>
+int main(void)
 {
-    int n,i,m=0, k=0;
-    int a[500];
-    printf("输入n的值:");
-    scanf("%d",&n);
-    for(i=0;i<n;i++) //给n个数赋值
-    {
-        a[i] =i+1;
-    }
-    while(m<n-1) //m代表总共被标记为0的个数
-    {
-        for(i=0;i<n;i++)
-        {
-            if(a[i]!=0)
-            {
-                k++; 
-                if(k%3==0) //k是每数到3个非零数标记为0,即凡报到3的人退出圈子
-                {
-                    a[i] = 0;
-                    m++;
-                }
-            }
-        }
-    }
-    for(i=0;i<n;i++)
-    {
-        if(a[i]!=0) //最后输出唯一一个非零数
-            printf("最后留下的是原来第%d号\n", a[i]);
-    }
-    return 0;
+	int i,j;
+	double sum=0,a[5][3];
+	printf("输入五名学生三门课程(语文，数学，英语)的成绩：\n");
+	for(i=0;i<5;i++)
+	{
+		printf("第%d名同学:",i+1);
+		for(j=0;j<3;j++)
+		{
+			scanf("%lf",&a[i][j]);
+		}
+	}
+	for(i=0;i<5;i++)
+	{
+		sum=0;//每次计算后将sum的值清零
+		for(j=0;j<3;j++)
+		{
+			sum+=a[i][j];
+		}
+		printf("第%d名同学的平均成绩为：%.2lf\n",i+1,sum/3);
+	}
+	return 0;
 }
-
