@@ -1,0 +1,19 @@
+//计算学生平均成绩
+#include<stdio.h>
+int main(void)
+{
+	int a[20];
+	int i,n;
+	double sum=0;
+	printf("输入学生人数n(n<20输入结果以回车结束):");
+	scanf("%d",&n);
+	printf("输入成绩:");
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&a[i]);
+		sum=sum+a[i];
+	}
+	printf("***平均成绩***\n");
+	printf("***   %.2lf   ***\n",sum/n);
+	return 0;
+}
