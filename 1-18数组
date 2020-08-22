@@ -1,0 +1,58 @@
+/*
+二维数组a(3行4列)表示矩阵A，二维数组b(4行5列)表示矩阵B，计算矩阵A和矩阵B的乘积。
+
+矩阵相乘应满足的条件： 
+ (1) 矩阵A的列数必须等于矩阵B的行数，矩阵A与矩阵B才能相乘；
+ (2) 矩阵C的行数等于矩阵A的行数，矩阵C的列数等于矩阵B的列数；
+ (3) 矩阵C中第i行第j列的元素等于矩阵A的第i行元素与矩阵B的第j列元素对应乘积之和。
+
+即cij=ai1*b1j+ai2*b2i+……+ain*bnj
+
+*/
+#include<stdio.h>
+int main(void)
+{
+	int i, j, k, temp;  //temp为矩阵C中的元素的值（cij），即temp=ai1*b1j+ai2*b2i+……+ain*bnj
+	int a[3][4], b[4][5], c[3][5];
+	//输入矩阵A和B
+	printf("输入12个数(矩阵A 3*4):");
+	for (i=0;i<3;i++) 
+	{
+		for (j=0;j<4;j++)
+		{
+			scanf("%d",&a[i][j]);
+		}
+	}
+	printf("\n输入20个数(m矩阵B 4*5):");
+	for(i=0;i<4;i++) 
+	{
+		for (j=0;j<5;j++)
+		{
+			scanf("%d",&b[i][j]);
+		}
+	}  
+	//计算cij=ai1*b1j+ai2*b2i+……+ain*bnj
+	 for (i=0;i<3;i++) 
+	 {
+		 for(j=0;j<5;j++) 
+		 {
+			 temp=0;
+			 for(k=0;k<4;k++) 
+			 {
+				 temp+=a[i][k]*b[k][j];
+				 c[i][j]=temp;
+			 }
+		 }
+	 }
+	 printf("\n输出A*B的结果(3*5矩阵):\n");
+	 //将矩阵C中元素按照3*5矩阵输出
+	 for(i=0;i<3;i++) 
+	 {
+		 for(j=0;j<5;j++)
+		 {
+			 printf("%d\t",c[i][j]);
+		 }
+		 printf("\n");
+	 }
+	 return 0;
+}
