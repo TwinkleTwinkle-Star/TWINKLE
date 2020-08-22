@@ -1,0 +1,27 @@
+
+/*
+找出一批正整数中的最大的偶数。
+*/
+
+#include<stdio.h>
+int fun(int a[],int n)
+{
+	int i,amax=-1;
+    for(i=0;i<n;i++)
+	{
+		if(a[i]%2==0)
+		{
+			if(a[i]>amax)//寻找偶数中的最大值
+			{
+				amax=a[i];  //amax储存最大值
+			}
+		}
+	}
+	return amax;  //将最大值amax返回主函数
+}
+int main(void)
+{
+  int a[]={1,2,9,24,35,18},k;
+  k=fun(a,6);    //将n赋值为6
+  printf("max=%d\n",k);
+}
