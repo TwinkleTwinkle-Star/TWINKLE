@@ -1,0 +1,20 @@
+/*
+
+问题:求一个给定字符串"Best wishes for you!"中的字母的个数。
+
+*/
+#include <stdio.h>
+ int main(void)
+{
+	 char str[]="Best wishes for you!";
+	 int i,k=0;
+	 for(i=0;str[i]!='\0';i++)
+	 {
+		 if(str[i]>='a'&&str[i]<='z'||str[i]>='A'&&str[i]<='Z')
+		 {
+			 k++;
+		 }
+	 }
+	 printf("k=%d\n",k);
+	 return 0;
+}
