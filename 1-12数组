@@ -1,0 +1,42 @@
+
+/*
+题目：输入20个数，将按照四行五列的形式输出，
+计算并输出第一行五个数字的和
+*/
+
+#include<stdio.h>
+#include<stdlib.h>
+int main(void)
+{
+        
+        int a[4][5];
+        int i,j,sum=0;
+		printf("输入20个数:");
+		for(i=0;i<4;i++)
+		{
+			for(j=0;j<5;j++)
+			{
+			scanf("%d",&a[i][j]);
+			}
+		}
+
+        printf ("按照4*5矩阵输出:\n ");
+        for(i=0; i<4;i++)
+        {
+                for(j=0;j<5;j++)
+					printf("%d ",a[i][j]);
+                printf("\n ");
+        }
+		for(i=0;i<4;i++)
+		{
+			for(j=0;j<5;j++)
+			{
+				if(i==0)
+				{
+					sum=sum+a[i][j];
+				}
+			}
+		}
+        printf("The sum: %d\n ",sum);
+		return 0;
+}
