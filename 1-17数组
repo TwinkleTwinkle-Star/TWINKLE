@@ -1,0 +1,27 @@
+/*
+求3行3列二维数组主对角线(从左上角到右下角)上元素之和。
+*/
+#include<stdio.h>
+int main(void)
+{ 
+	int i, j;
+	int sum,a[3][3];
+	sum=0;
+	printf("输入9个数:");
+	for(i=0;i<3;i++) 
+	{
+		for (j=0;j<3;j++)
+		{
+			scanf("%d",&a[i][j]);
+			printf(" %d ",a[i][j]);
+		}
+		printf("\n");
+	}
+	printf("\n");
+	for(i=0;i<3;i++) 
+	{
+		sum+=a[i][i];
+	}
+	printf("sum=%.d\n", sum);
+	return 0;
+}
