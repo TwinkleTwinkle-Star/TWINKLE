@@ -1,0 +1,27 @@
+/*
+对从键盘输入的10个整数进行降序排序,排序后输出第2大的数。
+*/
+#include<stdio.h>
+int fun(int a[])
+{
+
+	int i,j,t;
+    for(i=0;i<9;i++)
+		for(j=0;j<9-i;j++)
+            if(a[j]<a[j+1] ) 
+            {
+                t=a[j];
+                a[j]=a[j+1];
+                a[j+1]=t;
+            }
+	return a[1];
+}
+int main(void)
+{  
+    int a[10],i,m;
+	printf("输出10个正整数:");
+    for(i=0;i<10;i++)
+        scanf("%d",&a[i]);
+    m=fun(a);   //调用fun()函数
+    printf("%d ",m);
+}
