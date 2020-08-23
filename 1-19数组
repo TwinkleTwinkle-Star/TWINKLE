@@ -1,0 +1,33 @@
+/*
+找出1000以内的完数
+完数:一个数等于它的因子数之和，就称为“完数”
+*/
+
+#include<stdio.h>
+int main(void)
+{
+	int k[10];
+	int i,j,n,s;
+	for(j=2;j<1000;j++)
+	{
+		n=-1;
+		s=j;
+		for(i=1;i<j;i++)
+		{
+			if(j%i==0)
+			{
+				n++;
+				s=s-i;
+				k[n]=i;
+			}
+		}
+		if(s==0)  //是完数
+		{
+			printf("%d是完数,因子是:",j);
+			for(i=0;i<=n;i++)
+				printf("%d ",k[i]);
+			printf("\n");
+		}
+	}
+	return 0;
+}
