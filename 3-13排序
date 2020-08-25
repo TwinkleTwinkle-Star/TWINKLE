@@ -1,0 +1,67 @@
+/*
+快速排序基本思想：
+选取一个基准数；
+然后将大于和小于基准的元素分别放置于基准数两边；
+继续分别对按此方法分治基准数的两侧，直至整个序列有序。
+*/
+
+//快速排序法
+#include<stdio.h>
+#include<stdlib.h>
+
+int quick_sort(int a[],int p,int q)
+{
+	int i,j;
+	int max,n;
+	n=q-p+1;
+	if(p >= q)
+	{
+	 return 0;
+    }
+	 else
+	 {
+	 	max=a[p];
+	 	j=p;
+	 	for(i=p+1;i<= q;i++)
+	  {
+	 		if(max >= a[i])
+	 		{     
+	 		       n=a[i];
+	 		       a[i]=a[j+1];
+				   a[j+1]=n;
+				   n=a[j];
+				   a[j]=a[j+1];
+				   a[j+1]=n;
+				   j=j+1; 	
+			 }
+	  }
+		 quick_sort(a,p,j-1);
+		 quick_sort(a,j+1,  q);
+	 }
+	return 0;
+ } 
+ 
+void init_array(int a[],int n)
+{    
+     int i;
+	for(i = 0;i < n;i++)
+	{
+		a[i]=rand()%10+1;
+		printf("%d ",a[i]);
+	}
+	printf("\n");
+ } 
+ 
+int main()
+{
+	int a[10];
+	int i;
+	init_array(a,10);
+	quick_sort(a,0,9);
+    for(i=0;i<10;i++)
+    {
+    	printf("%d ",a[i]);
+	}
+	printf("\n");
+	return 0;
+}
