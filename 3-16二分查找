@@ -1,0 +1,33 @@
+
+//二分法实现数组查找,二分法查找指定有序的一维数组中的一个元素，输出其位置
+ 
+#include<stdio.h>
+
+int Search(int *a, int key, int low, int high)  //递归算法
+{
+    int mid;
+    if(low > high)
+        return -1;
+    mid=(low+high)/2;
+    if(a[mid] == key) return mid;
+    else if(a[mid] > key)
+         return Search(a,key,low,mid -1);
+    else
+         return Search(a,key,mid + 1,high);
+ 
+}
+
+int main(void)
+{
+	int a[10] = {2,4,6,8,10,12,14,16,18,20},t,k;
+	printf("输入你要查找的数");
+	scanf("%d",&t);
+	k=Search(a,t,2,20);
+	if(k == -1){
+		printf("不存在此数\n");
+	}else{
+		printf("%d是数组第%d个元素\n",t,k+1);
+	}
+ 
+	return 0;
+}
