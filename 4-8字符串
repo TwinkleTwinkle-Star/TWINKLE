@@ -1,0 +1,28 @@
+
+
+/*
+将字符串中的小写字母转换为对应的大写字母，其它字符不变，并输出字符串的长度。
+*/
+
+#include <stdio.h>
+#include<string.h>
+int main()
+{
+  void change();
+  char str[40];
+  int i,k;
+  printf("输入字符串:");
+  gets(str);
+  k=strlen(str);                //调用strlen函数计算字符串长度
+  for(i=0;str[i]!='\0';i++)
+  {
+	  if(str[i]>='a' && str[i]<='z') 
+	  {
+		  str[i]=str[i]-32;
+	  }
+  }
+  printf("字符串总长度为:%d \n",k);
+  printf("转换后结果:");
+  puts(str);
+  return 0;
+}
