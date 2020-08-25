@@ -1,0 +1,18 @@
+//使用strcat() 函数将两个字符串拼接在一起。
+
+#include <stdio.h>
+#include <string.h>
+int main(void)
+{
+    char str1[101];
+    char str2[101];
+	printf("输入第一个字符串:");
+    gets(str1);
+	printf("输入第二个字符串:");
+    gets(str2);
+    strcat(str1, str2);   //调用strcat() 函数将str1[]和str2[]拼接在一起
+	printf("连接后的字符串为:");
+    puts(str1);
+    return 0;
+}
+
