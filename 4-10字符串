@@ -1,0 +1,47 @@
+//查找子字符串在母字符串中出现的次数
+#include <stdio.h>
+#include <string.h>
+int get_count(char *,char *);
+int main()
+{
+    char str1[10]="aaaacaaa";
+    char str2[10]="aa";
+    int count;
+    count=get_count(str1,str2);
+    printf("count is %d\n",count);
+}
+
+int get_count(char * src,char * dst)
+{
+    int i=0,j=0;
+    int num0=0,num1=0;
+    int len=(int)strlen(dst);
+    while(src[i]!='\0')
+    {
+        while((dst[j]!=0)&&(dst[j]==src[i+j]))/*这里加上dst[j]!=0是为了应对主串为abab子串为ab的情况，也就是比较完成后两个字符串都到达末尾的情况*/
+        {
+            j++;
+        }
+        if(dst[j]==0)
+        {
+            i+=len;
+            j=0;
+            num0++;
+            if(src[i]=='\0')/*这种情况是为了应对主串为abab子串为ab的情况，也就是比较完成后两个字符串都到达末尾的情况*/
+            {
+                if(num0>num1)
+                    num1=num0;
+            }
+        }else
+        {   
+            if(num0>num1)
+            {
+                num1=num0;
+            }
+            num0=0;
+            i++;
+            j=0;
+        }
+    }
+    return num1;
+}
