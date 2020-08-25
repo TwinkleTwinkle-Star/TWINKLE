@@ -1,0 +1,25 @@
+//查找字符串
+
+#include<string.h>//头文件
+#include<stdio.h>
+int main()
+{
+	char str[]="hello world";
+	char s[10];
+	char *p;
+	strcpy(s,"or"); //查找or子串
+	p=strstr(str,s);
+	if(p==NULL )
+		printf("[%s]not found in [%s]n",s,str );
+	else
+		printf("[%s] occures at %d in [%s]\n",s,p-str+1,str );
+	printf("\n");
+	strcpy( s,"ord");  //查找ord子串,显示找不到
+	p=strstr(str,s);
+	if(p==NULL )
+		printf("[%s]not found in [%s]n\n",s,str );
+	else
+		printf("[%s]occures at d in [%s]n\n",s,p-str-1,str );
+
+	return 0;
+}
