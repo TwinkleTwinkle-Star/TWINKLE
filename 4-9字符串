@@ -1,0 +1,12 @@
+/追加字符串，在字符串结尾加上字符“ABC”后输出
+#include<stdio.h>
+#include<string.h>
+int main(void)
+{
+	char str[20];
+	printf("输入字符串:");
+	scanf("%s",str);
+	strcat(str,"ABC");    //追加字符串，调用strcat() 函数，在字符串后添加指定字符
+	printf("%s\n",str);
+	return 0;
+}
