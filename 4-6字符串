@@ -1,0 +1,27 @@
+//去掉字符串前m个字符。输入字符串，输出去掉前m个字符的结果。
+
+#include <stdio.h>
+#define M 20 //定义M,令M等于20,如果需要修改直接在宏定义中修改M的值
+ 
+void fun( char *t, int m, char *s )
+{
+	int i,j=0;
+	gets(t);
+	for(i=m;t[i]!='\0';i++)
+	{
+		s[j++]=t[i];    //从第m+1位起，逐个赋给s
+	}
+	s[j++]='\0';    //结尾加上结束标志
+}
+ 
+ 
+int main()
+{
+    char t[M],s[M];
+    int m;
+	printf("输入m:");
+    scanf("%d\n",&m); 
+    fun(t,m,s);  //调用函数
+    printf("输出去掉前%d个字符的结果:%s\n",m,s);
+    return 0;
+}
