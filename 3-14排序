@@ -1,0 +1,76 @@
+//指针实现快速排序法
+#include<stdio.h>
+#include<stdlib.h>
+
+void Q_sort(int a[],int num);
+void swap(int *a,int *b);
+static int m = 0,n = 0;
+
+int main()
+{
+    int k = 0;
+
+    int a[9] = {3,6,5,9,7,1,8,2,4};
+
+    Q_sort(a,9);
+
+    for(k = 0;k<9;k++)
+    {
+        printf("%d ",a[k]);
+    }
+
+
+    printf("\n比较次数为： %d\n交换次数为： %d\n",m,n);
+
+    return 0;
+}
+
+void Q_sort(int a[],int num)
+{
+    int key;
+    int i = 0;
+    int j = num - 1;
+    key = a[0];
+
+    if(num > 1)
+    {
+        while(i!=j)
+        {
+            for(;i<j;j--)
+            {
+                m++;
+                if(a[j]<key)
+                {
+                    a[i] = a[j];
+                    //swap(&a[i],&a[j]);
+
+                    n++;
+                    break;
+                }
+            }
+
+            for(;i<j;i++)
+            {
+                m++;
+                if(a[i]>key)
+                {
+                    a[j] = a[i];
+                    //swap(&a[i],&a[j]);
+
+                    n++;
+                    break; 
+				}
+            }
+          a[i] = key;
+        }
+        Q_sort(a,i);
+        Q_sort(a+i+1,num-i-1);
+    }
+}
+void swap(int *a,int *b)
+{
+    int temp;
+    temp = *a;
+    *a = *b;
+    *b = temp;
+}。
