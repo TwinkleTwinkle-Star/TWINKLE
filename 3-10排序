@@ -1,0 +1,37 @@
+//选择排序
+#include<stdio.h>
+int main(void)
+{
+	int i,j,k,t;
+	int a[10];
+	printf("输入10个数:");
+	for(i=0;i<10;i++)
+	{
+		
+		scanf("%d",&a[i]);
+	}
+	for(i=0;i<9;i++)
+	{
+        //描述第i趟的排序过程
+        //在a[i]--a[9]中找最小元素的下标
+		k=i;//假设第一个数最小
+		for(j=i+1;j<10;j++)
+		{	if(a[k]>a[j])
+			k=j;
+        }
+        //a[k]与a[i]交换
+		if(k!=i)//假设不成立
+		{
+			t=a[i];
+			a[i]=a[k];
+			a[k]=t;
+		}
+	}
+	printf("选择排序后结果:");
+	for(i=0;i<10;i++)
+	{
+	  	printf("%d  ",a[i]);
+	}
+	printf("\n");
+	return 0;
+}
