@@ -1,0 +1,34 @@
+//指针实现选择排序（从大到小排序）
+
+# include <stdio.h>
+
+int main(void)
+{
+	void sort(int * p, int n);						//sort函数的的声明
+	int array[10], * p, i;
+	p = array;										//将指针变量p指向array数组
+	printf("输入10个数\n");
+	for (i=0; i<10; i++)
+		scanf("%d", &array[i]);
+
+	sort(p, 10);									//调用sort函数，将指针变量和数组长度作为实参发送给函数
+	printf("选择排序后结果：\n");
+	for (i=0; i<10; i++)
+		printf("%d ", array[i]);
+	printf("\n");
+
+	return 0;
+}
+
+void sort(int * p, int n)  //指针实现选择排序
+{
+	int i, j, temp;
+	for (i=0;i<n;i++)								
+		for (j=i+1;j<n;j++)
+			if (*(p+i)<*(p+j))
+			{
+				temp = *(p+i);
+				*(p+i) = *(p+j);
+				*(p+j) = temp;			
+			}
+}
