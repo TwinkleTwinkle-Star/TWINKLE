@@ -1,0 +1,97 @@
+/*
+
+Kmp算法是用于求一长字符串和短字符串按一定规律匹配的情况，可以求是否能在长串中找到短串。
+其思想就是通过一个next数组对短串进行处理，找到短串前后某两个位置是否具有相同的前后缀，
+用next[i]表示最后以p[i]结尾的前缀和后缀与模式串前缀的最长匹配数。
+这样两字符串在匹配是，若在长串与短串某位置发现两字符不同，不能继续匹配时，
+短串下标i不一定要回到短串的首字符继续匹配，短串可以跳到next[i]的位置。
+从而降低算法的时间复杂度，从原来的O（n*m）降低到O（n+m）。
+n，m表示两串长度
+
+
+*/
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+void getnext(char *p,int *next)
+{
+	int len=strlen(p);
+	int k=-1;
+	int j=0;
+	next[0]=-1;
+	printf("\n j= %d next[0]%d",j,next[j]);
+	while(j<len-1)
+	{
+		if(k==-1||p[k]==p[j])
+		{
+			k++;
+			j++;
+			next[j]=k;
+			printf("\n j= %d next[%d]%d",j,j,next[j]);
+					}
+		else{
+			k=next[k];
+		}
+		
+	}
+	
+}
+int kmp(char *s,char *p,int *next)
+{
+	int i = 0;
+	int j = 0;
+	int sLen = strlen(s);
+	int pLen = strlen(p);
+	while(i<sLen&&j<pLen) 
+	{
+		if (j == -1 || s[i] == p[j])
+		{
+			i++;
+			j++;
+		}
+		else
+		{
+			//②如果j != -1，且当前字符匹配失败（即S[i] != P[j]），则令 i 不变，j = next[j]    
+			//next[j]即为j所对应的next值      
+			j=next[j];
+	}
+		
+
+	}
+	if(j>=pLen)
+		return(i-j);
+	return 0;
+
+} 
+int main(){
+	int next[50],n;
+	char s[100];
+    char p[50];
+	int a,b;
+	printf("输入字符串s:");
+	gets(s);
+	printf("输入字符串p:");
+	gets(p);
+	a=strlen(s);                //调用strlen函数计算字符串长度
+	b=strlen(p);                //调用strlen函数计算字符串长度
+    printf("\n实现如下:");
+    printf("\n s[] =%s:",s);
+    printf("\n p[] =%s:",p);
+    getnext(p,next);
+    n=kmp(s,p,next);
+	printf("\n字符串s的长度为%d，字符串p的长度为%d",a,b);
+    printf("\n匹配的位置为 %d\n",n);
+	if(n!=0)
+	{
+		
+	printf("则字符串s的第%d位开始存在字符串p.\n",n+1);
+	}
+	else {
+		
+	printf("则字符串s中不存在字符串p。\n");
+	}
+    return 0;
+	 
+} 
