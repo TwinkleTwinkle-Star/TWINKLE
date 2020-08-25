@@ -1,0 +1,48 @@
+/*
+
+希尔排序(Shell's Sort)是插入排序的一种又称“缩小增量排序”（Diminishing Increment Sort），
+是直接插入排序算法的一种更高效的改进版本。希尔排序是非稳定排序算法。
+希尔排序是把记录按下标的一定增量分组，对每组使用直接插入排序算法排序；随着增量逐渐减少，每组包含的关键词越来越多，当增量减至 1 时，整个文件恰被分成一组，算法便终止。
+
+*/
+#include<stdio.h>
+void shellSort(int data[],int len);       
+int main(void)
+{
+    int data[] = {45,20,80,40,26,58,66,70}; 
+    shellSort(data,8);
+}
+ 
+void shellSort(int data[],int len)
+{
+     int d=len;
+     int i,j;
+     while(d > 1) 
+     {
+         d=(d+1)/2;
+         for(i=0;i<len-d;i++) 
+         {
+               if(data[i+d]<data[i])
+               {
+                   int temp;
+                   temp = data[i+d];
+                   data[i+d] = data[i];
+                   data[i] = temp;
+               }
+               
+               printf("\nd=%d***",d);
+               for(j=0;j<8;j++ )
+               {
+                   printf("%d,",data[j]);
+               }
+         }
+     }
+     
+     printf("\n输出排序后结果:");
+     for(j=0;j<8;j++ )
+     {
+          printf("%d,",data[j]);
+     }
+ 
+}
+
