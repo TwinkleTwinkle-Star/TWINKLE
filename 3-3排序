@@ -1,0 +1,42 @@
+//冒泡排序
+#include <stdio.h>
+ 
+void swap(int *t1, int *t2)
+{
+    int temp;
+    temp=*t1;
+    *t1=*t2;
+    *t2=temp;
+}
+ 
+void bubble_sort(int arr[], int len)
+{
+    int i, j;
+ 
+    for (i=0; i<len-1;i++) {
+        for (j=0; j<len-1-i;j++) {
+            if (arr[j]>arr[j+1]) {
+                swap(&arr[j], &arr[j + 1]);
+            }
+        }
+    }
+}
+ 
+ 
+int main()
+{
+    int arr[]={546,567,6,88,7,0,52,8,790,87,90,85,79,3,4};
+    int i;
+    int len;
+
+	len = sizeof(arr) / sizeof(*arr);
+    bubble_sort(arr, len);
+    printf("len = %d \n", len);
+    printf("use bubble sort the arrary is: ");
+    
+    for(i = 0; i < len; i++){
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+ 
