@@ -1,0 +1,60 @@
+
+//比较字符串长度，实现strcmp函数
+/*
+strcmp函数
+int strcmp (char *str1,char *str2)
+功能：字符串比较
+返回值：若参数s1和s2字符串相同则返回0，s1若大于s2则返回大于0的值，s1若小于s2则返回小于0的值
+*/
+
+#include <stdio.h>
+int strcmp(char *str1, char *str2);
+int main(void)
+{
+	char *str1="dfgdg";
+	char *str2="dfgdvcbg";
+	int k;
+
+	k=strcmp(str1, str2);
+	if(k==0)
+	{
+		printf("字符串str1的长度 等于 str2的长度\n");
+	}
+	else if(k==1)
+	{
+		printf("字符串str1的长度 大于 str2的长度\n");
+	}
+	else
+	{
+		printf("字符串str1的长度 小于 str2的长度\n");
+	}
+
+	return 0;
+}
+
+
+int strcmp(char *str1, char *str2)     //实现strcmp函数
+{
+	if (str1==NULL||str2==NULL)
+	{
+		return -1;
+	}
+	while (*str2==*str1 && *str1 != '\0' && *str2 != '\0')
+	{
+		str1++;
+		str2++;
+	}
+	if (*str1==*str2)
+	{
+		return 0;
+	}
+	else  if (*str1>*str2)
+	{
+		return 1;
+	}
+		else
+		{
+			return -1;
+		}
+   
+}
