@@ -1,0 +1,64 @@
+
+//康托展开表达式：X=an(n-1)!+an-1(n-2)!+…+a1·0!
+
+#include<stdio.h>
+int factorial_function(int num);
+int main()
+{
+	int num[80];
+	char s[80];//储存输入数字或者字符串的每一位，第一位为s[0],第二位为s[1]……
+	int i=0,j=0,k=0,count=0; //count为输入数字或者字符串的位数
+	char val;//需要计算值（数字或者字符串）
+	int sum = 0;
+ 
+	printf("输入需要计算的值:");
+	while(scanf("%c",&val))
+	{
+		if(val=='\n')
+			break;
+		else
+		{
+			s[count]=val;
+			count++; //count为输入数字或者字符串的位数
+		}
+	}
+
+	printf("count = %d\n",count);
+ 
+	for(i=0;i<count;i++)
+	{
+		printf("-------第%d位数字（字符）为:%c-------\n",i+1,s[i]);//输出每一位对应的数字或者字符
+		for(j=i+1;j<count;j++)
+		{
+			if(s[i]>s[j])//求元素的排序，将第i位数字和剩下的所有数字进行比较，如第一个元素需要和剩下的n-1个比较，第二个元素和剩下的n-2个进行比较……
+			{
+				printf("大于第%d位:%c\n",j+1,s[j]);
+				k++;//k为每一位数字后的数字中，比这一位数字小的数字的个数，即为表达式中的an
+			}
+			
+		}
+		printf("a[%d]=%d\n",count-i,k);//输出a[n]，a[n-1]……a[1]对应的值
+		printf("\n");
+		num[i]=k;//num[i]储存对应位置数字的k（an）值
+		k=0;//让k的值为零，返回循环
+	}
+//输出结果
+	for(j=count-1;j>=0;j--)
+	{
+		sum+=factorial_function(j)*num[k];//计算X
+		k++;
+	}
+	printf("是第%d大数\n",sum+1);
+ 
+	return 0;
+}
+
+//求阶乘 递归
+int factorial_function(int num)
+{
+	if(num <= 1)
+		return 1;
+	else
+		return (factorial_function(num-1)*num);
+}
+ 
