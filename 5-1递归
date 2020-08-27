@@ -31,4 +31,3 @@ int main()
 	printf("%d!=%d\n",n, fac(n));
 	return 0;
 }
-*/
