@@ -1,0 +1,59 @@
+
+/*
+设有n个活动的集合E?=?{1,2,…,n}，其中每个活动都要求使用同一会场，
+而在同一时间内只有一个活动能使用这一会场。
+每个活动i都有一个要求使用该资源的起始时间si和一个结束时间fi,且si<fi。
+如果选择了活动i，则它在半开时间区间[si,fi)内占用资源。
+若区间[si,?i)与区间[sj,fj)不相交，则称活动i与活动j是相容的。
+也就是说，当si>=fj或sj>=fi时，活动i与活动j相容。
+求有多少活动可以相容。
+*/
+
+
+#include<stdio.h>
+#include<malloc.h>
+void greedy(int s[],int f[],int a[],int k);
+ 
+int main()
+{
+ 
+  int s[] = {1,3,0,5,3,5,6,8,8,2,12};      //s[]：活动的开始时间  
+  int f[] = {4,5,6,7,8,9,10,11,12,13,14};  // f[]:活动的结束时间
+  int k;                                   //k:活动个数 
+  int *a;                                  //a[]:0或者1，为0表示活动不被安排，1表示活动被安排 
+  k=sizeof(f)/sizeof(f[0]);
+  a=(int*)malloc(sizeof(int)*k);
+  
+  greedy(s,f,a,k);
+  
+}
+ 
+
+void greedy(int s[],int f[],int a[],int k) 
+{
+     int i;
+     int j=0;
+	 int count;
+     for(i=0;i<k;i++)
+     {
+       a[i] = 0;   //初始所有活动都未被安排 
+     } 
+     a[0]=1;	 
+	 printf("开始时间%d点,结束时间%d点.",s[0],f[0]); 
+     printf("第1个活动被安排\n");
+     count = 1;
+     for(i=1;i<k;i++)
+     {
+        if(s[i] > f[j])
+        {
+           a[i]=1;
+           printf("开始时间%d点,结束时间%d点.",s[i],f[i]); 
+           j = i;
+           count++;
+           printf("第%d个活动被安排\n",i+1);
+        }
+     }
+     printf("总计%d个活动被安排\n",count); 
+     
+     
+}
