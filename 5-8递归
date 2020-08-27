@@ -1,0 +1,20 @@
+//输出整数的每一位数
+#include <stdio.h>
+#include <stdlib.h>
+void fun(int a)
+{
+	if(a>9)
+	{
+		fun(a/10);
+	}
+	printf("%d ", a%10);
+}
+int main()
+{
+	int a;
+	printf("输入一个整数a(a的位数小于十位数):");
+	scanf("%d",&a);
+	fun(a);
+	printf("\n");
+	return 0;
+}
