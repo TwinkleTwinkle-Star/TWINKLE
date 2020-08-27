@@ -1,0 +1,27 @@
+//求字符串的最长递增子序列的长度
+
+#include<stdio.h>
+#include<string.h>
+int main(){
+	char s[10010],dp[10010],maxlen;
+	int n,i,j;
+	printf("输入字符串个数n:");
+	scanf("%d",&n);
+    while(n--){
+        memset(dp,0,sizeof(dp));  //数组赋初值
+		printf("输入字符串:");
+        scanf("%s",s);
+        dp[0]=1;
+        maxlen=1;
+        for(i=1;s[i];i++){dp[i]=1;
+            for(j=0;j<i;j++){
+                if(s[j]<s[i]){
+                    dp[i]=dp[j]+1>dp[i]?dp[j]+1:dp[i];
+                }
+            }
+            maxlen=dp[i]>maxlen?dp[i]:maxlen;
+        }
+        printf("字符串的最长递增子序列的长度:%d\n",maxlen);
+    }
+    return 0;
+}
