@@ -1,0 +1,23 @@
+//将字符串中的字符逆序输出
+
+#include <stdio.h>
+#include <stdlib.h>
+
+void String(char * str)//*str传递的是字符串首字符的地址（指向首地址的指针）
+{
+	if(*(++str)!='\0')
+	{
+		String(str);
+	}
+	printf("%c",*(str-1));
+}
+int main()
+{
+	char* ch="abcdef";
+	printf("翻转前的字符串:%s\n",ch);
+	printf("翻转后的字符串:");
+	String(ch);
+	printf("\n");
+
+	return 0;
+}
