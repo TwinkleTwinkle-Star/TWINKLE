@@ -1,0 +1,19 @@
+
+//计算字符串长度
+#include <stdio.h>
+#include <stdlib.h>
+int Strlen(char* str)
+{
+	if(*str=='\0')
+	{
+		return 0;
+	}
+	return 1+Strlen(str+1);
+}
+int main()
+{
+	char* ch="jisuanchangdu";
+	int len=Strlen(ch);
+	printf("字符串的长度为 %d\n",len);
+	return 0;
+}
