@@ -1,0 +1,40 @@
+/*
+欧几里得算法的内容
+算法核心思想：
+   例如找A，B的最大公约数GCD（A,B），并且A>B
+如果A=0，那么GCD（A，B）=GCD（0，B）=B；
+如果B=0，那么GCD（A，B）=GCD（A，0）=A；
+用余数表示A，A=B*Q+R，Q表示B的几倍，R是余数。
+GCD（A,B）=GCD（B，R）
+证明GCD(A,B)=GCD(B,A-B)=GCD(B,A％B)
+
+
+*/
+#include<stdio.h>
+#include<math.h>
+int main(void)
+{
+	int a,b,c;
+	printf("输入a和b的值(a,b>=0):");
+	scanf("%d%d",&a,&b);
+	if(a==0){
+		printf("GCD(a,b)=GCD(0,b)=b=%d\n",b);
+	}
+	else if(b==0){
+		printf("GCD(a,b)=GCD(a,0)=a=%d\n",a);
+	}
+	else{
+		while(a%b)
+		{
+			c=a%b;
+			a=b;
+			b=c;
+		}
+		printf("GCD(a,b)=%d\n",c);
+	}
+	return 0;
+}
+
+		
+
+
