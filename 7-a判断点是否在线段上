@@ -1,0 +1,64 @@
+判断点是否在线段上
+设点为Q，线段为P1P2：
+判断点Q在该线段上的依据是;
+1（Q - P1）* （P2 - P1）= 0；
+2 Q在以P1P2为对角线的矩形内；
+需要同时满足这两个条件，
+1 保证了Q点在直线上；
+2 保证了Q不在线段的延长线或反向延长线上。
+
+
+矢量叉积的知识：
+设矢量P=（x1，y1），矢量Q=（x2，y1）
+P * Q = （x1 * y2） - （x2*y1）
+*/
+
+
+#include <stdio.h>
+typedef struct point
+{
+    double x;  //x坐标
+    double y;  //y坐标
+
+}point;  //定义点
+
+int onSegement(point p1,point p2,point Q)     //判断点是否在线上，在返回1，不在返回0
+{
+    double maxx,minx,maxy,miny;
+
+    maxx=p1.x>p2.x?p1.x:p2.x;    //矩形的右边长
+    minx=p1.x>p2.x?p2.x:p1.x;     //矩形的左边长
+    maxy=p1.y>p2.y?p1.y:p2.y;    //矩形的上边长
+    miny=p1.y>p2.y?p2.y:p1.y;     //矩形的下边长
+
+    if( ((Q.x-p1.x)*(p2.y -p1.y) == (p2.x -p1.x) *(Q.y -p1.y)) && ( Q.x >= minx && Q.x <= maxx ) && ( Q.y >= miny && Q.y <= maxy))
+        return 1;
+    else
+        return 0;
+}
+int main(void)
+{
+    point P1,P2,Q;
+
+    printf("输入线段的第一个端点:");
+    scanf("%f%f",&P1.x ,&P1.y);
+    printf("\n");
+
+    printf("输入线段的第二个端点:");
+    scanf("%f%f",&P2.x ,&P2.y );
+    printf("\n");
+
+    printf("输入点:");
+    scanf("%f%f",&Q.x ,&Q.y );
+    printf("\n");
+
+    if( onSegement(P1,P2,Q) )
+    {
+        printf("点在线段上\n");
+    }
+    else
+    {
+        printf("点不在线段上\n");
+    }
+
+}
