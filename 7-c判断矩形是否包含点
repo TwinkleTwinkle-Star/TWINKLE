@@ -1,0 +1,31 @@
+
+//判断点是否在矩形上
+#include <stdio.h>
+int fun(int a,int b,int c,int d,int x,int y)
+{
+	if((x<a)||(x>a+c)||(y<b)||(y>a+c+d))
+		return 1;
+	else if((x>a)&&(x<a+c)&&(y>b)&&(y<a+c+d))
+		return 2;
+	else 
+		return 0;
+}
+int main()
+{
+	int a,b,c,d,x,y;
+	int p=0;
+	printf("请输入矩形的左下角点坐标和矩形的长、宽:  ");
+	scanf("%d%d%d%d",&a,&b,&c,&d);
+	printf("请输入点的坐标: ");
+	scanf("%d%d",&x,&y);
+	p=fun(a,b,c,d,x,y);
+	switch(p)
+	{
+	case 1: printf("点在矩形外边。");
+		break;
+	case 2: printf("点在矩形内部。");
+		break;
+	default: printf("点在矩形的边上。");
+		break;
+	}
+}
