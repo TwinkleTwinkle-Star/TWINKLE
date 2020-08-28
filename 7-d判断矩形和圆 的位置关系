@@ -1,0 +1,29 @@
+//判断矩形和圆 的位置关系
+
+#include<stdio.h>
+#include<math.h>
+#define PI 3.14//定义圆周率
+int main()
+{
+	double x1,y1,x2,y2,x3,y3,r;
+	double d;
+	printf("输入确定一条直线的两个坐标：");
+	scanf("%lf%lf%lf%lf",&x1,&y1,&x2,&y2);
+	printf("输入圆心坐标和圆的半径:");
+	scanf("%lf%lf%lf",&x3,&y3,&r);
+	d=abs((y1-y2)*x3+(x2-x1)*y3+x1*y2-x2*y1)/sqrt(pow(y1-y2,2)+pow(x2-x1,2));   //圆心的到直线的距离
+	printf("圆心到直线的距离：%.2lf",d);
+	if(d==r)
+	{
+		printf("直线与圆相切");
+	}
+	if(d<r)
+	{
+		printf("直线与圆相交直线");
+	}
+	if(d>r)
+	{
+		printf("直线与圆相离");
+	}
+	return 0;
+}
