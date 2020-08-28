@@ -1,0 +1,24 @@
+//判断两线段是否相交
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+	int a,b,c,d,X1,Y1,X2,Y2;
+	printf("第一条线段：\n");
+	printf("输入第一个点的坐标(用空格间隔)：");
+	scanf("%d %d",&a,&b); printf("输入第二个点的坐标(用空格间隔)：");
+	scanf("%d %d",&c,&d);
+	X1=(int)fabs(a-c);
+	Y1=(int)fabs(b-d);
+	printf("第二条线段：\n");
+	printf("输入第一个点的坐标(用空格间隔)：");
+	scanf("%d %d",&a,&b); printf("输入第二个点的坐标(用空格间隔)：");
+	scanf("%d %d",&c,&d);
+	X2=(int)fabs(a-c);
+	Y2=(int)fabs(b-d);
+	if(X1*Y2 == X2*Y1)
+		printf("这两条线不相交\n");
+	else
+		printf("这两条线相交\n");
+	return 0;
+}
