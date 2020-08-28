@@ -1,0 +1,17 @@
+
+//已知两点坐标,求另一点到穿过这两点的直线最短距离.
+
+#include<stdio.h>
+#include<math.h>
+int main()
+{
+	float x,y,x1,y1,x2,y2,l,d;
+	scanf("%f %f %f %f",&x1,&y1,&x2,&y2);
+	l=(y2-y1)/(x2-x1);
+	printf("%.2f\n",l);
+	scanf("%f %f",&x,&y);
+	printf("%.2f\n",fabs(l*x-y+y1-l*x1));
+	d=fabs(l*x-y+y1-l*x1)/sqrt(l*l+1);
+	printf("%.3f",d);
+	return 0;
+}
