@@ -1,0 +1,73 @@
+
+//逆向输出
+#include <stdio.h>
+#include <stdlib.h>
+#define N 5
+ 
+typedef struct node {
+	int date;
+	struct node * next;
+}ElemSN;
+ 
+//创建单向链表
+ElemSN * CreateLink(int a[])
+{
+	ElemSN * h, *tail, *p;
+    int i = 1;
+	h=tail= (ElemSN *)malloc(sizeof(ElemSN));
+	h->date = a[0];
+	h->next = NULL;
+	for (i; i < N; i++)
+	{
+		p = (ElemSN *)malloc(sizeof(ElemSN));
+		p->date = a[i];
+		p->next = NULL;
+	    tail->next = p;
+		tail = p;
+	}
+	return h;
+}
+ 
+//输出单向链表
+void PrintLink(ElemSN * h)
+{
+	ElemSN * p;
+	for (p = h; p != NULL; p = p->next)
+	{
+		printf("%d\t", p->date);
+	}
+}
+//逆向输出链表
+void PriePrintLink(ElemSN *h)
+{
+	ElemSN *pend = NULL, *p;
+	printf("逆序输出的结果为:\n");
+	while (pend-h)
+	{
+		for (p = h; p->next - pend; p = p->next);
+		printf("%d\t", p->date);
+		pend = p;
+	}
+}
+
+ 
+   
+int main(void)
+{
+	int a[5] = { 18,9,78,36,45 };
+	ElemSN * head;
+ 
+	//创建单向链表
+	head = CreateLink(a);
+ 
+	//输出单向链表
+	PrintLink(head);
+	printf("\n");
+	
+
+	//逆向输出链表
+	PriePrintLink(head);
+	printf("\n");
+ 
+	return 0;
+}
