@@ -1,0 +1,69 @@
+//链表输出最大值
+#include <stdlib.h>
+#define N 5
+ 
+typedef struct node {
+	int date;
+	struct node * next;
+}ElemSN;
+ 
+//创建单向链表
+ElemSN * CreateLink(int a[])
+{
+	ElemSN * h, *tail, *p;
+    int i = 1;
+	h=tail= (ElemSN *)malloc(sizeof(ElemSN));
+	h->date = a[0];
+	h->next = NULL;
+	for (i; i < N; i++)
+	{
+		p = (ElemSN *)malloc(sizeof(ElemSN));
+		p->date = a[i];
+		p->next = NULL;
+	    tail->next = p;
+		tail = p;
+	}
+	return h;
+}
+ 
+//输出单向链表
+void PrintLink(ElemSN * h)
+{
+	ElemSN * p;
+	for (p = h; p != NULL; p = p->next)
+	{
+		printf("%d\t", p->date);
+	}
+}
+
+//输出最大值
+ElemSN * MaxNode(ElemSN *h)
+{
+	ElemSN *Pmax, *p;
+	Pmax = h;
+	for (p = h->next; p; p = p->next)
+		if (Pmax->date < p->date)
+			Pmax = p;
+	return Pmax;
+}
+
+int main()
+{
+	int a[5] = { 18,9,78,36,45 };
+	ElemSN * head, *Pmax;
+
+ 
+	//创建单向链表
+	head = CreateLink(a);
+ 
+	//输出单向链表
+	PrintLink(head);
+	printf("\n");
+	
+	//输出最大值
+	Pmax = MaxNode(head);
+	printf("最大值为%d\n", Pmax->date);
+ 
+
+	return 0;
+}
